@@ -79,10 +79,8 @@ var $$ = function(selector) {
     --app-toolbar-font-size: inherit;
   }
   app-drawer {
-    --app-drawer-width: 200px;
     --app-drawer-content-container: {
-      background: #eee;
-      margin: 16px;
+      background: #fff;
     };
   }
 </style>
@@ -95,7 +93,7 @@ var $$ = function(selector) {
 
 <app-drawer-layout fullbleed>
   <app-drawer swipe-open>
-    <div style="height: 100%; overflow: auto;">
+    <div class="drawer-content-wrapper">
       {% block drawer %}{% endblock %}
     </div>
   </app-drawer>
