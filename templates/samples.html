@@ -14,6 +14,7 @@
 {% endblock %}
 
 {% block drawer %}
+  <h3>Category filter</h3>
   {% verbatim %}
   <paper-listbox id="papermenu" selected-item="{{selectedCategory}}"
                  on-transitionend="_onRippleDone">
@@ -86,7 +87,6 @@
   {% endverbatim %}
 
 </div>
-<!-- </section> -->
 
 </template>
 
@@ -130,7 +130,6 @@ t.prevSelectedCategory = null;
 // Set search box to URL deep link.
 if (location.hash) {
   search.value = location.hash.substr(1);
-  // t.filter(search.value);
 }
 
 t._computeIcon = function(el) {
@@ -145,7 +144,7 @@ t._computeFeatureLink = function(id) {
   return '/features/' + id;
 };
 
-// TODO: category filtering no longer works now that the menu is in the app drawer
+// TODO(ericbidelman): category filtering no longer works now that the menu is in the app drawer
 // and not part of the dom-bind template.
 t._onSelectCategory = function(e, detail) {
   // Enable toggling selected item until
@@ -290,9 +289,7 @@ search.addEventListener('keyup', function(e) {
   if (!e.target.value && e.keyCode != 27) { // ESC
     t.removeFilters();
   } else {
-    //if (e.keyCode == 13) {  // Enter
-      t.filter(e.target.value);
-    //}
+    t.filter(e.target.value);
   }
 });
 
